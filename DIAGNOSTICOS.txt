@@ -1,0 +1,15 @@
+../../work/verificacao/ex01.ts(20,1): error TS2322: Type 'string' is not assignable to type 'number'.
+../../work/verificacao/ex03.ts(20,10): error TS2540: Cannot assign to 'cpf' because it is a read-only property.
+../../work/verificacao/ex03.ts(21,10): error TS2339: Property 'peso' does not exist on type '{ readonly cpf: string; nome: string; idade: number; plano: boolean; alergias?: string[] | undefined; contatoEmergencia?: { nome: string; telefone: string; } | undefined; }'.
+../../work/verificacao/ex03.ts(23,19): error TS2339: Property 'nome' does not exist on type 'object'.
+../../work/verificacao/ex03.ts(26,5): error TS2322: Type 'number' is not assignable to type 'object'.
+../../work/verificacao/ex04.ts(13,12): error TS2339: Property 'push' does not exist on type 'readonly string[]'.
+../../work/verificacao/ex05.ts(23,16): error TS2540: Cannot assign to '1' because it is a read-only property.
+../../work/verificacao/ex06.ts(31,1): error TS2322: Type '"PIX"' is not assignable to type 'FormaPagamento'.
+../../work/verificacao/ex08.ts(13,1): error TS2322: Type '"XG"' is not assignable to type 'Tamanho'.
+../../work/verificacao/ex08.ts(21,15): error TS2345: Argument of type 'string' is not assignable to parameter of type '"centro-oeste" | "nordeste" | "norte" | "sudeste" | "sul"'.
+../../work/verificacao/ex10.ts(18,13): error TS2322: Type 'Van' is not assignable to type 'never'.
+../../work/verificacao/ex10.ts(76,52): error TS7053: Element implicitly has an 'any' type because expression of type '"caminhao" | "carro" | "moto" | "van"' can't be used to index type '{ carro: number; moto: number; caminhao: number; }'.
+  Property 'van' does not exist on type '{ carro: number; moto: number; caminhao: number; }'.
+TypeError: dados.temperatura.toFixed is not a function
+work/verificacao/void.ts(19,26): error TS2322: Type 'number' is not assignable to type 'void'.

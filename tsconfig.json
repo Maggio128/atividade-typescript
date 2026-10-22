@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2017",
+    "module": "CommonJS",
+    "noEmitOnError": true,
+    "outDir": "dist"
+  },
+  "include": ["ex*.ts"]
+}

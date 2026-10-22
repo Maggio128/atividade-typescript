@@ -1,0 +1,75 @@
+## ex01
+
+Pão francês: 12 x R$ 0.75 = R$ 9.00
+Bolo de cenoura: 2 x R$ 18.50 = R$ 37.00
+Total: R$ 46.00
+Padaria aberta? true
+Pães vendidos no ano: 1250000
+Categoria: 26
+
+## ex02
+
+CUPOM Nº 000042
+Cliente: Maria da Silva
+Item: 3 x R$ 12.40
+Subtotal: R$ 37.20
+Desconto fidelidade: R$ 1.86
+TOTAL: R$ 35.34
+
+## ex03
+
+Ana Souza, 34 anos. Alergias: dipirona, lactose
+Carlos Lima, 61 anos. Sem alergias registradas
+
+## ex04
+
+Itens: Arroz 5kg, Feijão 1kg, Leite 1L, Café 500g, Sabão em pó
+Acima de R$ 10: Arroz 5kg, Café 500g, Sabão em pó
+Total da compra: R$ 106.22
+Itens na despensa: 12
+
+## ex05
+
+Porto Velho: 34°C
+Curitiba: 12°C
+Manaus: 31°C
+Porto Alegre: 9°C
+Natal: 29°C
+Mínima: 9°C | Máxima: 34°C | Média: 23.0°C
+
+## ex06
+
+[1 - Recebido] Recebemos seu pedido!
+[2 - EmPreparo] Seu pedido está sendo preparado 🍳
+[3 - SaiuParaEntrega] O entregador está a caminho 🛵
+[4 - Entregue] Pedido entregue. Bom apetite!
+Pagamento: PIX
+
+## ex07
+
+[E-MAIL] para ana@escola.com: Reunião de pais sexta às 19h
+[APP] para joao.resp: Reunião de pais sexta às 19h
+SMS ignorado: mensagem longa
+
+## ex08
+
+Cliente: CLI-0042 | Camiseta: M
+Entrega: Rua das Flores, 100 - (sem complemento)
+Frete para o sul: R$ 15.00
+Telefone: 69999990000
+
+## ex09
+
+Porto Velho: 34.0°C
+Erro: campo "temperatura" inválido
+Erro: JSON malformado
+
+## ex10
+
+[PAGO] ABC1D23 (carro) - 3h - R$ 18.00
+[PAGO] MOT0A12 (moto) - 1h - R$ 4.00
+[PAGO] CAM9Z99 (caminhao) - 5h - R$ 55.00
+[PAGO] XYZ4E56 (carro) - 2h - R$ 6.50 (selo -50%)
+Faturamento: R$ 83.50
+Entradas: carro=2, moto=1, caminhao=1
+Erro ao ler veículo: tipo "bicicleta" desconhecido
