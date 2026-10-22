@@ -18,4 +18,4 @@ console.log(`Total: R$ ${total.toFixed(2)}`);
 console.log(`Padaria aberta? ${aberta}`);
 console.log(`Pães vendidos no ano: ${paesNoAno}`);
 console.log(`Categoria: ${categoria}`);
-// quantidade1 = 'doze'; // ERRO_EX01 // error TS2322: Type 'string' is not assignable to type 'number'.
+// quantidade1 = 'doze'; // ERRO_EX01 // error TS2322: Type 'string' is not assignable to type 'number'. // error TS2322: Type 'string' is not assignable to type 'number'.

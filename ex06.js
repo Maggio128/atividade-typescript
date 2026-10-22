@@ -42,6 +42,6 @@ while (true) {
     status = avancar(status);
 }
 let pagamento = FormaPagamento.Pix;
-// pagamento = 'PIX'; // ERRO_EX06 // error TS2322: Type '"PIX"' is not assignable to type 'FormaPagamento'.
+// pagamento = 'PIX'; // ERRO_EX06 // error TS2322: Type '"PIX"' is not assignable to type 'FormaPagamento'. // error TS2322: Type '"PIX"' is not assignable to type 'FormaPagamento'.
 // Um literal string não é um membro do enum; use FormaPagamento.Pix.
 console.log(`Pagamento: ${pagamento}`);

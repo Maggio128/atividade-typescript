@@ -11,7 +11,7 @@ const nomes = itens.map(item => item.nome);
 const caros = itens.filter(item => item.preco > 10);
 const total = itens.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
 const categorias = ['Mercearia', 'Laticínios', 'Limpeza'];
-// categorias.push('Higiene'); // ERRO_EX04 // error TS2339: Property 'push' does not exist on type 'readonly string[]'.
+// categorias.push('Higiene'); // ERRO_EX04 // error TS2339: Property 'push' does not exist on type 'readonly string[]'. // error TS2339: Property 'push' does not exist on type 'readonly string[]'.
 const despensa = [[2, 0, 1], [4, 4], [1]];
 const guardados = despensa.reduce((soma, prateleira) => soma + prateleira.reduce((s, n) => s + n, 0), 0);
 const [primeiro, segundo] = itens;

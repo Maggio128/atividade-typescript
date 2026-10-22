@@ -7,7 +7,7 @@ function lerComAny(json) {
     const dados = JSON.parse(json); // any autorizado somente nesta demonstração.
     console.log(dados.temperatura.toFixed(1));
 }
-// lerComAny(respostaQuebrada); // ERRO_RUNTIME // TypeError: dados.temperatura.toFixed is not a function
+// lerComAny(respostaQuebrada); // ERRO_RUNTIME // TypeError: dados.temperatura.toFixed is not a function // TypeError: dados.temperatura.toFixed is not a function
 function falhar(mensagem) { throw new Error(mensagem); }
 function lerClima(json) {
     let dados;

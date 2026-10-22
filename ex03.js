@@ -15,12 +15,12 @@ function resumo(p) {
 }
 console.log(resumo(paciente));
 console.log(resumo(paciente2));
-// paciente.cpf = '222'; // ERRO_EX03A // error TS2540: Cannot assign to 'cpf' because it is a read-only property.
-// paciente.peso = 65; // ERRO_EX03B // error TS2339: Property 'peso' does not exist on type '{ readonly cpf: string; nome: string; idade: number; plano: boolean; alergias?: string[] | undefined; contatoEmergencia?: { nome: string; telefone: string; } | undefined; }'.
+// paciente.cpf = '222'; // ERRO_EX03A // error TS2540: Cannot assign to 'cpf' because it is a read-only property. // error TS2540: Cannot assign to 'cpf' because it is a read-only property.
+// paciente.peso = 65; // ERRO_EX03B // error TS2339: Property 'peso' does not exist on type '{ readonly cpf: string; nome: string; idade: number; plano: boolean; alergias?: string[] | undefined; contatoEmergencia?: { nome: string; telefone: string; } | undefined; }'. // error TS2339: Property 'peso' does not exist on type '{ readonly cpf: string; nome: string; idade: number; plano: boolean; alergias?: string[] | undefined; contatoEmergencia?: { nome: string; telefone: string; } | undefined; }'.
 let dados = paciente;
-// console.log(dados.nome); // ERRO_EX03C // error TS2339: Property 'nome' does not exist on type 'object'.
+// console.log(dados.nome); // ERRO_EX03C // error TS2339: Property 'nome' does not exist on type 'object'. // error TS2339: Property 'nome' does not exist on type 'object'.
 // object aceita valores não primitivos, mas não declara a propriedade nome.
 let x = 10; // {} aceita todo valor não nulo nem undefined, inclusive primitivos.
-// let y: object = 10; // ERRO_EX03D // error TS2322: Type 'number' is not assignable to type 'object'.
+// let y: object = 10; // ERRO_EX03D // error TS2322: Type 'number' is not assignable to type 'object'. // error TS2322: Type 'number' is not assignable to type 'object'.
 // Object também aceita primitivos não nulos por seu contrato de objeto encapsulado;
 // não equivale ao tipo object. Para campos conhecidos, use um tipo específico.

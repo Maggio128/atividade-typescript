@@ -22,4 +22,4 @@ const [cidadeHistorico, ...semana] = historico;
 const mediaSemanal = semana.length > 0 ? semana.reduce((s, t) => s + t, 0) / semana.length : null;
 // Média semanal: 33°C. Sem leituras, null evita divisão por zero.
 const capitalOficial = ['RO', 'Porto Velho'];
-// capitalOficial[1] = 'Manaus'; // ERRO_EX05 // error TS2540: Cannot assign to '1' because it is a read-only property.
+// capitalOficial[1] = 'Manaus'; // ERRO_EX05 // error TS2540: Cannot assign to '1' because it is a read-only property. // error TS2540: Cannot assign to '1' because it is a read-only property.

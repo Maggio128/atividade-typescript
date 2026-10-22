@@ -19,7 +19,7 @@ function calcularTarifa(v, horas) {
         }
     }
 }
-// ERRO_VAN_UNIAO // error TS2322: Type 'Van' is not assignable to type 'never'.
+// ERRO_VAN_UNIAO // error TS2322: Type 'Van' is not assignable to type 'never'. // error TS2322: Type 'Van' is not assignable to type 'never'.
 // never garante que todos os membros da união foram tratados pelo switch.
 function fecharTicket(t) {
     const [entrada, saida] = t.periodo;

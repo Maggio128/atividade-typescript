@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Dez exercícios de TypeScript com execução no navegador e consulta ao código fonte."><title>Laboratório de TypeScript</title>
+<style>
+:root{color-scheme:light;--bg:#f3f5f8;--ink:#142235;--muted:#536276;--blue:#2458c7;--line:#dce2eb}*{box-sizing:border-box}body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink)}header,main,footer{max-width:1240px;margin:auto;padding:28px 32px}header{padding-top:42px;padding-bottom:24px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.12em;color:var(--blue);text-transform:uppercase}h1{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:10px 0 14px;letter-spacing:-.035em}header p{max-width:740px;color:var(--muted);margin:0}.layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:28px;padding-top:0}nav{display:grid;gap:8px;align-content:start}.exercise{text-align:left;display:grid;grid-template-columns:34px 1fr;column-gap:10px;align-items:center;padding:13px 15px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--ink);cursor:pointer;font:inherit;width:100%;transition:background .15s,border-color .15s}.exercise:hover{border-color:var(--blue);background:#f4f7ff}.exercise[aria-pressed=true]{border-color:var(--blue);background:#eaf0ff;box-shadow:inset 3px 0 var(--blue)}.num{grid-row:span 2;font-size:14px;font-weight:750;color:var(--blue)}.exercise strong{font-size:14px}.exercise small{color:var(--muted);font-size:11px}.workspace{min-width:0}.panel{background:white;border:1px solid var(--line);border-radius:14px;overflow:hidden}.panel-heading{padding:22px 24px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}h2{font-size:23px;line-height:1.25;margin:5px 0}.subtitle{font-size:13px;color:var(--muted);margin:0}.badge{white-space:nowrap;border:1px solid #d5e3d9;background:#edf7ef;border-radius:20px;padding:5px 10px;font-size:11px;color:#24623d}.terminal-bar{display:flex;justify-content:space-between;align-items:center;background:#23334a;padding:10px 20px;color:#c4d2e5;font-size:12px}.dots{letter-spacing:3px;color:#7794be}pre{white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2;font:13px/1.8 Consolas,monospace;margin:0}#output{background:#132033;color:#edf3ff;padding:24px;min-height:300px}#status{padding:12px 24px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}.code-section{margin-top:18px;background:white;border:1px solid var(--line);border-radius:12px;padding:18px 22px}summary{font-weight:650;cursor:pointer}.code-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0;color:var(--muted);font-size:12px}.code-tools button{border:1px solid var(--line);background:white;padding:7px 12px;border-radius:7px;color:var(--blue);cursor:pointer;font:inherit}#code{background:#f5f7fb;padding:16px;max-height:500px;overflow:auto;font-size:12px}.note{font-size:12px;color:var(--muted);margin:18px 2px}button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #dd930e;outline-offset:3px}footer{font-size:12px;color:var(--muted);padding-top:0}footer a{color:var(--blue)}@media(max-width:760px){header,main,footer{padding-left:18px;padding-right:18px}.layout{grid-template-columns:1fr;gap:20px}nav{grid-template-columns:repeat(2,minmax(0,1fr))}.exercise{padding:10px;grid-template-columns:24px 1fr}.exercise strong{font-size:12px}.exercise small{font-size:10px}.panel-heading{padding:18px;flex-wrap:wrap}#output{padding:18px;min-height:240px}h2{font-size:20px}}
+</style></head><body><header><span class="eyebrow">Programação para Web · Atividade prática</span><h1>Laboratório de TypeScript</h1><p>Dez exercícios sobre tipos, do caixa da padaria ao sistema de estacionamento. Clique em um botão para executar o exercício e conferir o resultado.</p></header><main class="layout"><nav aria-label="Executar exercícios"><button class="exercise" type="button" data-index="0" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 01: Caixa da padaria"><span class="num">01</span><strong>Caixa da padaria</strong><small>Executar exercício 01</small></button><button class="exercise" type="button" data-index="1" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 02: Cupom fiscal"><span class="num">02</span><strong>Cupom fiscal</strong><small>Executar exercício 02</small></button><button class="exercise" type="button" data-index="2" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 03: Ficha de paciente"><span class="num">03</span><strong>Ficha de paciente</strong><small>Executar exercício 03</small></button><button class="exercise" type="button" data-index="3" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 04: Lista de compras"><span class="num">04</span><strong>Lista de compras</strong><small>Executar exercício 04</small></button><button class="exercise" type="button" data-index="4" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 05: Boletim do clima"><span class="num">05</span><strong>Boletim do clima</strong><small>Executar exercício 05</small></button><button class="exercise" type="button" data-index="5" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 06: Pedido de delivery"><span class="num">06</span><strong>Pedido de delivery</strong><small>Executar exercício 06</small></button><button class="exercise" type="button" data-index="6" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 07: Central de notificações"><span class="num">07</span><strong>Central de notificações</strong><small>Executar exercício 07</small></button><button class="exercise" type="button" data-index="7" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 08: Formulário de cadastro"><span class="num">08</span><strong>Formulário de cadastro</strong><small>Executar exercício 08</small></button><button class="exercise" type="button" data-index="8" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 09: API de clima"><span class="num">09</span><strong>API de clima</strong><small>Executar exercício 09</small></button><button class="exercise" type="button" data-index="9" aria-pressed="false" aria-controls="output" aria-label="Executar exercício 10: Estacionamento"><span class="num">10</span><strong>Estacionamento</strong><small>Executar exercício 10</small></button></nav><section class="workspace" aria-label="Resultado e código"><div class="panel"><div class="panel-heading"><div><span class="eyebrow" id="exercise-label">Pronto para começar</span><h2 id="title">Escolha um exercício</h2><p class="subtitle" id="topic">Cada clique inicia uma nova execução.</p></div><span class="badge">Execução no navegador</span></div><div class="terminal-bar"><span>Saída do programa</span><span class="dots" aria-hidden="true">● ● ●</span></div><pre id="output" tabindex="0" aria-label="Saída da execução">Selecione um dos dez exercícios ao lado.</pre><div id="status" role="status" aria-live="polite">Nenhum exercício executado ainda.</div></div><details class="code-section"><summary>Consultar o código TypeScript</summary><div class="code-tools"><span id="filename">Selecione um exercício</span><button id="download" type="button" disabled>Baixar arquivo .ts</button></div><pre id="code">O código aparecerá aqui após a execução.</pre></details><p class="note">Os exercícios 09 e 10 incluem entradas inválidas de propósito. As mensagens de erro exibidas nesses casos fazem parte do resultado esperado. As linhas que provocam erros de compilação estão comentadas no código TypeScript.</p></section></main><footer>Atividade de tipos em TypeScript · <a href="./LEIA-ME.md">Guia e explicações</a> · <a href="./DIAGNOSTICOS.txt">Erros propositais registrados</a></footer><script>
+'use strict';
+const titles=["Caixa da padaria","Cupom fiscal","Ficha de paciente","Lista de compras","Boletim do clima","Pedido de delivery","Central de notificações","Formulário de cadastro","API de clima","Estacionamento"];
+const topics=["Tipos básicos e inferência","Strings e conversões","Objetos e campos opcionais","Arrays e listas imutáveis","Tuplas e desestruturação","Enums e estados","Funções e void","Uniões e tipos literais","unknown e never","Projeto integrador"];
+const sources=["export {};\nconst nomeProduto1: string = 'Pão francês';\nconst precoUnitario1: number = 0.75;\nlet quantidade1: number = 12;\nconst nomeProduto2: string = 'Bolo de cenoura';\nconst precoUnitario2: number = 18.5;\nconst quantidade2: number = 2;\nlet aberta = true; // Tipo inferido: boolean (variável mutável).\nconst subtotal1 = precoUnitario1 * quantidade1;\nconst subtotal2 = precoUnitario2 * quantidade2;\nconst total = subtotal1 + subtotal2;\nconst paesNoAno: number = 1_250_000;\nconst categoria: number = 0x1A;\nconsole.log(`${nomeProduto1}: ${quantidade1} x R$ ${precoUnitario1.toFixed(2)} = R$ ${subtotal1.toFixed(2)}`);\nconsole.log(`${nomeProduto2}: ${quantidade2} x R$ ${precoUnitario2.toFixed(2)} = R$ ${subtotal2.toFixed(2)}`);\nconsole.log(`Total: R$ ${total.toFixed(2)}`);\nconsole.log(`Padaria aberta? ${aberta}`);\nconsole.log(`Pães vendidos no ano: ${paesNoAno}`);\nconsole.log(`Categoria: ${categoria}`);\n// quantidade1 = 'doze'; // ERRO_EX01 // error TS2322: Type 'string' is not assignable to type 'number'.\n","export {};\nconst nomeDigitado: string = ' maria da silva ';\nfunction formatarNome(nome: string): string {\n  return nome.trim().toLowerCase().split(/\\s+/).filter(p => p.length > 0)\n    .map(p => ['da', 'de', 'do'].indexOf(p) >= 0 ? p : p.charAt(0).toUpperCase() + p.slice(1)).join(' ');\n}\nconst precoLido = '12.40';\nconst quantidadeLida = '3un';\nconst preco: number = Number(precoLido);\nconst quantidade: number = parseInt(quantidadeLida, 10);\nconst clienteFidelidade: boolean = true;\nconst subtotal = preco * quantidade;\nconst desconto = clienteFidelidade ? subtotal * 0.05 : 0;\nconst cupom = `CUPOM Nº ${String(42).padStart(6, '0')}\nCliente: ${formatarNome(nomeDigitado)}\nItem: ${quantidade} x R$ ${preco.toFixed(2)}\nSubtotal: R$ ${subtotal.toFixed(2)}\nDesconto fidelidade: R$ ${desconto.toFixed(2)}\nTOTAL: R$ ${(subtotal - desconto).toFixed(2)}`;\nconsole.log(cupom);\n","export {};\nconst paciente: {\n  readonly cpf: string; nome: string; idade: number; plano: boolean;\n  alergias?: string[]; contatoEmergencia?: { nome: string; telefone: string };\n} = {\n  cpf: '000.000.000-00', nome: 'Ana Souza', idade: 34, plano: true,\n  alergias: ['dipirona', 'lactose'],\n  contatoEmergencia: { nome: 'Paulo Souza', telefone: '(69) 99999-0000' }\n};\nconst paciente2: typeof paciente = {\n  cpf: '111.111.111-11', nome: 'Carlos Lima', idade: 61, plano: false\n};\nfunction resumo(p: { nome: string; idade: number; alergias?: string[] }): string {\n  const alergias = p.alergias && p.alergias.length > 0\n    ? `Alergias: ${p.alergias.join(', ')}` : 'Sem alergias registradas';\n  return `${p.nome}, ${p.idade} anos. ${alergias}`;\n}\nconsole.log(resumo(paciente));\nconsole.log(resumo(paciente2));\n// paciente.cpf = '222'; // ERRO_EX03A // error TS2540: Cannot assign to 'cpf' because it is a read-only property.\n// paciente.peso = 65; // ERRO_EX03B // error TS2339: Property 'peso' does not exist on type '{ readonly cpf: string; nome: string; idade: number; plano: boolean; alergias?: string[] | undefined; contatoEmergencia?: { nome: string; telefone: string; } | undefined; }'.\nlet dados: object = paciente;\n// console.log(dados.nome); // ERRO_EX03C // error TS2339: Property 'nome' does not exist on type 'object'.\n// object aceita valores não primitivos, mas não declara a propriedade nome.\nlet x: {} = 10; // {} aceita todo valor não nulo nem undefined, inclusive primitivos.\n// let y: object = 10; // ERRO_EX03D // error TS2322: Type 'number' is not assignable to type 'object'.\n// Object também aceita primitivos não nulos por seu contrato de objeto encapsulado;\n// não equivale ao tipo object. Para campos conhecidos, use um tipo específico.\n","export {};\nconst itens: { nome: string; preco: number; quantidade: number }[] = [\n  { nome: 'Arroz 5kg', preco: 28.90, quantidade: 1 },\n  { nome: 'Feijão 1kg', preco: 8.49, quantidade: 2 },\n  { nome: 'Leite 1L', preco: 4.99, quantidade: 6 },\n  { nome: 'Café 500g', preco: 17.90, quantidade: 1 },\n  { nome: 'Sabão em pó', preco: 12.50, quantidade: 1 }\n];\nconst nomes: string[] = itens.map(item => item.nome);\nconst caros = itens.filter(item => item.preco > 10);\nconst total: number = itens.reduce((soma, item) => soma + item.preco * item.quantidade, 0);\nconst categorias: readonly string[] = ['Mercearia', 'Laticínios', 'Limpeza'];\n// categorias.push('Higiene'); // ERRO_EX04 // error TS2339: Property 'push' does not exist on type 'readonly string[]'.\nconst despensa: number[][] = [[2, 0, 1], [4, 4], [1]];\nconst guardados = despensa.reduce((soma, prateleira) => soma + prateleira.reduce((s, n) => s + n, 0), 0);\nconst [primeiro, segundo] = itens;\nconst novaLista = [...itens, { nome: 'Sal 1kg', preco: 3, quantidade: 1 }];\nconsole.log(`Itens: ${nomes.join(', ')}`);\nconsole.log(`Acima de R$ 10: ${caros.map(item => item.nome).join(', ')}`);\nconsole.log(`Total da compra: R$ ${total.toFixed(2)}`);\nconsole.log(`Itens na despensa: ${guardados}`);\n","export {};\nconst leituras: [cidade: string, temperatura: number][] = [\n  ['Porto Velho', 34], ['Curitiba', 12], ['Manaus', 31], ['Porto Alegre', 9], ['Natal', 29]\n];\nfunction extremos(temps: number[]): [number, number] {\n  if (temps.length === 0 || temps.some(t => !Number.isFinite(t))) {\n    throw new Error('Informe pelo menos uma temperatura finita');\n  }\n  return temps.reduce\u003c[number, number]>(([min, max], t) => [Math.min(min, t), Math.max(max, t)], [temps[0], temps[0]]);\n}\nconst temperaturas = leituras.map(([, temp]) => temp);\nconst [minima, maxima] = extremos(temperaturas);\nfor (const [cidade, temp] of leituras) console.log(`${cidade}: ${temp}°C`);\nconst media = temperaturas.reduce((s, t) => s + t, 0) / temperaturas.length;\nconsole.log(`Mínima: ${minima}°C | Máxima: ${maxima}°C | Média: ${media.toFixed(1)}°C`);\nconst contato1: [nome: string, telefone: string, email?: string] = ['Ana', '69999990000', 'ana@exemplo.com'];\nconst contato2: [nome: string, telefone: string, email?: string] = ['Carlos', '69988880000'];\nconst historico: [string, ...number[]] = ['Porto Velho', 30, 31, 32, 33, 34, 35, 36];\nconst [cidadeHistorico, ...semana] = historico;\nconst mediaSemanal = semana.length > 0 ? semana.reduce((s, t) => s + t, 0) / semana.length : null;\n// Média semanal: 33°C. Sem leituras, null evita divisão por zero.\nconst capitalOficial: readonly [string, string] = ['RO', 'Porto Velho'];\n// capitalOficial[1] = 'Manaus'; // ERRO_EX05 // error TS2540: Cannot assign to '1' because it is a read-only property.\n","export {};\nenum StatusPedido { Recebido = 1, EmPreparo, SaiuParaEntrega, Entregue, Cancelado }\nenum FormaPagamento { Pix = 'PIX', Cartao = 'CARTAO', Dinheiro = 'DINHEIRO' }\nfunction mensagem(status: StatusPedido): string {\n  switch (status) {\n    case StatusPedido.Recebido: return 'Recebemos seu pedido!';\n    case StatusPedido.EmPreparo: return 'Seu pedido está sendo preparado 🍳';\n    case StatusPedido.SaiuParaEntrega: return 'O entregador está a caminho 🛵';\n    case StatusPedido.Entregue: return 'Pedido entregue. Bom apetite!';\n    case StatusPedido.Cancelado: return 'Pedido cancelado.';\n    default: throw new Error('Status inválido');\n  }\n}\nfunction avancar(status: StatusPedido): StatusPedido {\n  switch (status) {\n    case StatusPedido.Recebido: return StatusPedido.EmPreparo;\n    case StatusPedido.EmPreparo: return StatusPedido.SaiuParaEntrega;\n    case StatusPedido.SaiuParaEntrega: return StatusPedido.Entregue;\n    case StatusPedido.Entregue:\n    case StatusPedido.Cancelado: return status;\n    default: throw new Error('Status inválido');\n  }\n}\nlet status = StatusPedido.Recebido;\nwhile (true) {\n  console.log(`[${status} - ${StatusPedido[status]}] ${mensagem(status)}`);\n  if (status === StatusPedido.Entregue) break;\n  status = avancar(status);\n}\nlet pagamento: FormaPagamento = FormaPagamento.Pix;\n// pagamento = 'PIX'; // ERRO_EX06 // error TS2322: Type '\"PIX\"' is not assignable to type 'FormaPagamento'.\n// Um literal string não é um membro do enum; use FormaPagamento.Pix.\nconsole.log(`Pagamento: ${pagamento}`);\n","export {};\ntype Notificador = (destinatario: string, mensagem: string) => void;\nconst porEmail: Notificador = (d, m) => { console.log(`[E-MAIL] para ${d}: ${m}`); };\nconst porSms: Notificador = (d, m) => {\n  if (m.length > 160) {\n    console.log('SMS ignorado: mensagem longa');\n    return;\n  }\n  console.log(`[SMS] para ${d}: ${m}`);\n};\nconst porApp: Notificador = (d, m) => { console.log(`[APP] para ${d}: ${m}`); };\nfunction notificarTodos(destinatarios: string[], mensagem: string, enviar: Notificador): void {\n  destinatarios.forEach(d => enviar(d, mensagem));\n}\nconst mensagem = 'Reunião de pais sexta às 19h';\nnotificarTodos(['ana@escola.com'], mensagem, porEmail);\nnotificarTodos(['joao.resp'], mensagem, porApp);\nnotificarTodos(['(69) 99999-0000'], 'a'.repeat(161), porSms);\n// function teste(): void { return 10; } // ERRO_EX07 // error TS2322: Type 'number' is not assignable to type 'void'.\nconst contar: Notificador = (d, m) => m.length;\n// A atribuição contextual a uma função que retorna void permite um valor de retorno:\n// o chamador deve ignorá-lo. Uma função explicitamente declarada : void não pode retornar 10.\n","export {};\nlet codigo: number | string = 42;\nfunction formatarCodigo(c: number | string): string {\n  const numero = typeof c === 'number' ? c : Number(c.replace(/^CLI-/, ''));\n  if (!Number.isSafeInteger(numero) || numero \u003c 0 || numero > 9999 ||\n      (typeof c === 'string' && !/^(CLI-)?\\d{1,4}$/.test(c))) {\n    throw new Error('Código inválido: informe de 0 a 9999 ou CLI- seguido de até quatro dígitos');\n  }\n  return `CLI-${String(numero).padStart(4, '0')}`;\n}\ntype Tamanho = 'P' | 'M' | 'G' | 'GG';\nlet tamanho: Tamanho = 'M';\n// tamanho = 'XG'; // ERRO_EX08A // error TS2322: Type '\"XG\"' is not assignable to type 'Tamanho'.\nfunction calcularFrete(regiao: 'norte' | 'nordeste' | 'centro-oeste' | 'sudeste' | 'sul'): number {\n  return { norte: 25, nordeste: 20, 'centro-oeste': 18, sudeste: 12, sul: 15 }[regiao];\n}\nconst complemento: string | null = null;\nfunction limparTelefone(tel: string | number): string { return String(tel).replace(/\\D/g, ''); }\nconst r = 'sul'; // const mantém o tipo literal 'sul'.\nlet r2 = 'sul'; // let amplia o tipo para string, pois permite reatribuição.\n// calcularFrete(r2); // ERRO_EX08B // error TS2345: Argument of type 'string' is not assignable to parameter of type '\"centro-oeste\" | \"nordeste\" | \"norte\" | \"sudeste\" | \"sul\"'.\nlet rCorrigido = 'sul' as const;\nconsole.log(`Cliente: ${formatarCodigo(codigo)} | Camiseta: ${tamanho}`);\nconsole.log(`Entrega: Rua das Flores, 100 - ${complemento ?? '(sem complemento)'}`);\nconsole.log(`Frete para o ${r}: R$ ${calcularFrete(rCorrigido).toFixed(2)}`);\nconsole.log(`Telefone: ${limparTelefone('(69) 99999-0000')}`);\n","export {};\nconst respostaOk = '{\"cidade\":\"Porto Velho\",\"temperatura\":34,\"umidade\":0.62}';\nconst respostaQuebrada = '{\"cidade\":\"Porto Velho\",\"temperatura\":\"quente\"}';\nconst respostaInvalida = '{ cidade: Porto Velho ';\nfunction lerComAny(json: string): void {\n  const dados: any = JSON.parse(json); // any autorizado somente nesta demonstração.\n  console.log(dados.temperatura.toFixed(1));\n}\n// lerComAny(respostaQuebrada); // ERRO_RUNTIME // TypeError: dados.temperatura.toFixed is not a function\nfunction falhar(mensagem: string): never { throw new Error(mensagem); }\nfunction lerClima(json: string): { cidade: string; temperatura: number } {\n  let dados: unknown;\n  try { dados = JSON.parse(json); }\n  catch (erro: unknown) {\n    if (erro instanceof SyntaxError) return falhar('JSON malformado');\n    throw erro;\n  }\n  if (typeof dados !== 'object' || dados === null) return falhar('resposta deve ser um objeto');\n  if (!('cidade' in dados) || typeof dados.cidade !== 'string' || dados.cidade.trim() === '')\n    return falhar('campo \"cidade\" inválido');\n  if (!('temperatura' in dados) || typeof dados.temperatura !== 'number' || !Number.isFinite(dados.temperatura))\n    return falhar('campo \"temperatura\" inválido');\n  return { cidade: dados.cidade, temperatura: dados.temperatura };\n}\nfor (const resposta of [respostaOk, respostaQuebrada, respostaInvalida]) {\n  try {\n    const clima = lerClima(resposta);\n    console.log(`${clima.cidade}: ${clima.temperatura.toFixed(1)}°C`);\n  } catch (erro: unknown) {\n    console.log(`Erro: ${erro instanceof Error ? erro.message : 'erro desconhecido'}`);\n  }\n}\n","export {};\ntype Placa = string;\ntype Periodo = [entrada: number, saida: number];\ntype Carro = { readonly placa: Placa; tipo: 'carro'; portas: 2 | 4 };\ntype Moto = { readonly placa: Placa; tipo: 'moto'; cilindradas: number };\ntype Caminhao = { readonly placa: Placa; tipo: 'caminhao'; eixos: number };\ntype Veiculo = Carro | Moto | Caminhao;\nenum SituacaoTicket { Aberto = 'ABERTO', Pago = 'PAGO' }\ntype Ticket = { veiculo: Veiculo; periodo: Periodo; selo: boolean; situacao: SituacaoTicket; valor?: number };\nfunction falhar(mensagem: string): never { throw new Error(mensagem); }\nfunction calcularTarifa(v: Veiculo, horas: number): number {\n  if (!Number.isInteger(horas) || horas \u003c 1) return falhar('Horas devem ser inteiras e no mínimo 1');\n  switch (v.tipo) {\n    case 'carro': return 8 + (horas - 1) * 5;\n    case 'moto': return 4 + (horas - 1) * 2;\n    case 'caminhao': return 15 + (horas - 1) * 10;\n    default: {\n      const _naoTratado: never = v;\n      return _naoTratado;\n    }\n  }\n}\n// Experimento: acrescente Van à união acima sem alterar calcularTarifa.\ntype Van = { readonly placa: Placa; tipo: 'van'; lugares: number };\n// ERRO_VAN_UNIAO // error TS2322: Type 'Van' is not assignable to type 'never'.\n// never garante que todos os membros da união foram tratados pelo switch.\nfunction fecharTicket(t: Ticket): Ticket {\n  const [entrada, saida] = t.periodo;\n  if (!Number.isInteger(entrada) || !Number.isInteger(saida) || entrada \u003c 0 || saida \u003c entrada)\n    return falhar('Período inválido: use horas inteiras e saída maior ou igual à entrada');\n  const horas = Math.max(1, saida - entrada);\n  const valor = calcularTarifa(t.veiculo, horas) * (t.selo ? 0.5 : 1);\n  return { ...t, valor, situacao: SituacaoTicket.Pago };\n}\nfunction registrar(msg: string): void { console.log(msg); }\nfunction lerVeiculo(json: string): Veiculo {\n  let dados: unknown;\n  try { dados = JSON.parse(json); }\n  catch (erro: unknown) {\n    if (erro instanceof SyntaxError) return falhar('JSON malformado');\n    throw erro;\n  }\n  if (typeof dados !== 'object' || dados === null) return falhar('Veículo deve ser um objeto');\n  if (!('tipo' in dados) || typeof dados.tipo !== 'string') return falhar('campo \"tipo\" inválido');\n  if (!('placa' in dados) || typeof dados.placa !== 'string' || !/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(dados.placa))\n    return falhar('campo \"placa\" inválido');\n  const placa = dados.placa;\n  switch (dados.tipo) {\n    case 'carro':\n      if (!('portas' in dados) || (dados.portas !== 2 && dados.portas !== 4)) return falhar('campo \"portas\" inválido');\n      return { placa, tipo: 'carro', portas: dados.portas };\n    case 'moto':\n      if (!('cilindradas' in dados) || typeof dados.cilindradas !== 'number' || !Number.isFinite(dados.cilindradas) || dados.cilindradas \u003c= 0)\n        return falhar('campo \"cilindradas\" inválido');\n      return { placa, tipo: 'moto', cilindradas: dados.cilindradas };\n    case 'caminhao':\n      if (!('eixos' in dados) || typeof dados.eixos !== 'number' || !Number.isInteger(dados.eixos) || dados.eixos \u003c 2)\n        return falhar('campo \"eixos\" inválido');\n      return { placa, tipo: 'caminhao', eixos: dados.eixos };\n    default: return falhar(`tipo \"${dados.tipo}\" desconhecido`);\n  }\n}\nconst tickets: Ticket[] = [\n  { veiculo: lerVeiculo('{\"placa\":\"ABC1D23\",\"tipo\":\"carro\",\"portas\":4}'), periodo: [8, 11], selo: false, situacao: SituacaoTicket.Aberto },\n  { veiculo: lerVeiculo('{\"placa\":\"MOT0A12\",\"tipo\":\"moto\",\"cilindradas\":160}'), periodo: [9, 10], selo: false, situacao: SituacaoTicket.Aberto },\n  { veiculo: lerVeiculo('{\"placa\":\"CAM9Z99\",\"tipo\":\"caminhao\",\"eixos\":3}'), periodo: [7, 12], selo: false, situacao: SituacaoTicket.Aberto },\n  { veiculo: lerVeiculo('{\"placa\":\"XYZ4E56\",\"tipo\":\"carro\",\"portas\":2}'), periodo: [14, 16], selo: true, situacao: SituacaoTicket.Aberto }\n];\nconst fechados = tickets.map(fecharTicket);\nfechados.map(t => {\n  const horas = Math.max(1, t.periodo[1] - t.periodo[0]);\n  registrar(`[${t.situacao}] ${t.veiculo.placa} (${t.veiculo.tipo}) - ${horas}h - R$ ${(t.valor ?? 0).toFixed(2)}${t.selo ? ' (selo -50%)' : ''}`);\n  return t;\n});\nconst faturamento = fechados.filter(t => t.situacao === SituacaoTicket.Pago).reduce((s, t) => s + (t.valor ?? 0), 0);\nconst entradas = tickets.reduce((contagem, t) => { contagem[t.veiculo.tipo] += 1; return contagem; }, { carro: 0, moto: 0, caminhao: 0 });\nregistrar(`Faturamento: R$ ${faturamento.toFixed(2)}`);\nregistrar(`Entradas: carro=${entradas.carro}, moto=${entradas.moto}, caminhao=${entradas.caminhao}`);\ntry { lerVeiculo('{\"placa\":\"ABC1D23\",\"tipo\":\"bicicleta\"}'); }\ncatch (erro: unknown) { registrar(`Erro ao ler veículo: ${erro instanceof Error ? erro.message : 'erro desconhecido'}`); }\n"];
+const runners=[function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const nomeProduto1 = 'Pão francês';
+const precoUnitario1 = 0.75;
+let quantidade1 = 12;
+const nomeProduto2 = 'Bolo de cenoura';
+const precoUnitario2 = 18.5;
+const quantidade2 = 2;
+let aberta = true; // Tipo inferido: boolean (variável mutável).
+const subtotal1 = precoUnitario1 * quantidade1;
+const subtotal2 = precoUnitario2 * quantidade2;
+const total = subtotal1 + subtotal2;
+const paesNoAno = 1250000;
+const categoria = 0x1A;
+console.log(`${nomeProduto1}: ${quantidade1} x R$ ${precoUnitario1.toFixed(2)} = R$ ${subtotal1.toFixed(2)}`);
+console.log(`${nomeProduto2}: ${quantidade2} x R$ ${precoUnitario2.toFixed(2)} = R$ ${subtotal2.toFixed(2)}`);
+console.log(`Total: R$ ${total.toFixed(2)}`);
+console.log(`Padaria aberta? ${aberta}`);
+console.log(`Pães vendidos no ano: ${paesNoAno}`);
+console.log(`Categoria: ${categoria}`);
+// quantidade1 = 'doze'; // ERRO_EX01 // error TS2322: Type 'string' is not assignable to type 'number'. // error TS2322: Type 'string' is not assignable to type 'number'.
+
+},
+function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const nomeDigitado = ' maria da silva ';
+function formatarNome(nome) {
+    return nome.trim().toLowerCase().split(/\s+/).filter(p => p.length > 0)
+        .map(p => ['da', 'de', 'do'].indexOf(p) >= 0 ? p : p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+}
+const precoLido = '12.40';
+const quantidadeLida = '3un';
+const preco = Number(precoLido);
+const quantidade = parseInt(quantidadeLida, 10);
+const clienteFidelidade = true;
+const subtotal = preco * quantidade;
+const desconto = clienteFidelidade ? subtotal * 0.05 : 0;
+const cupom = `CUPOM Nº ${String(42).padStart(6, '0')}
+Cliente: ${formatarNome(nomeDigitado)}
+Item: ${quantidade} x R$ ${preco.toFixed(2)}
+Subtotal: R$ ${subtotal.toFixed(2)}
+Desconto fidelidade: R$ ${desconto.toFixed(2)}
+TOTAL: R$ ${(subtotal - desconto).toFixed(2)}`;
+console.log(cupom);
+
+},
+function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const paciente = {
+    cpf: '000.000.000-00', nome: 'Ana Souza', idade: 34, plano: true,
+    alergias: ['dipirona', 'lactose'],
+    contatoEmergencia: { nome: 'Paulo Souza', telefone: '(69) 99999-0000' }
+};
+const paciente2 = {
+    cpf: '111.111.111-11', nome: 'Carlos Lima', idade: 61, plano: false
+};
+function resumo(p) {
+    const alergias = p.alergias && p.alergias.length > 0
+        ? `Alergias: ${p.alergias.join(', ')}` : 'Sem alergias registradas';
+    return `${p.nome}, ${p.idade} anos. ${alergias}`;
+}
+console.log(resumo(paciente));
+console.log(resumo(paciente2));
+// paciente.cpf = '222'; // ERRO_EX03A // error TS2540: Cannot assign to 'cpf' because it is a read-only property. // error TS2540: Cannot assign to 'cpf' because it is a read-only property.
+// paciente.peso = 65; // ERRO_EX03B // error TS2339: Property 'peso' does not exist on type '{ readonly cpf: string; nome: string; idade: number; plano: boolean; alergias?: string[] | undefined; contatoEmergencia?: { nome: string; telefone: string; } | undefined; }'. // error TS2339: Property 'peso' does not exist on type '{ readonly cpf: string; nome: string; idade: number; plano: boolean; alergias?: string[] | undefined; contatoEmergencia?: { nome: string; telefone: string; } | undefined; }'.
+let dados = paciente;
+// console.log(dados.nome); // ERRO_EX03C // error TS2339: Property 'nome' does not exist on type 'object'. // error TS2339: Property 'nome' does not exist on type 'object'.
+// object aceita valores não primitivos, mas não declara a propriedade nome.
+let x = 10; // {} aceita todo valor não nulo nem undefined, inclusive primitivos.
+// let y: object = 10; // ERRO_EX03D // error TS2322: Type 'number' is not assignable to type 'object'. // error TS2322: Type 'number' is not assignable to type 'object'.
+// Object também aceita primitivos não nulos por seu contrato de objeto encapsulado;
+// não equivale ao tipo object. Para campos conhecidos, use um tipo específico.
+
+},
+function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const itens = [
+    { nome: 'Arroz 5kg', preco: 28.90, quantidade: 1 },
+    { nome: 'Feijão 1kg', preco: 8.49, quantidade: 2 },
+    { nome: 'Leite 1L', preco: 4.99, quantidade: 6 },
+    { nome: 'Café 500g', preco: 17.90, quantidade: 1 },
+    { nome: 'Sabão em pó', preco: 12.50, quantidade: 1 }
+];
+const nomes = itens.map(item => item.nome);
+const caros = itens.filter(item => item.preco > 10);
+const total = itens.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
+const categorias = ['Mercearia', 'Laticínios', 'Limpeza'];
+// categorias.push('Higiene'); // ERRO_EX04 // error TS2339: Property 'push' does not exist on type 'readonly string[]'. // error TS2339: Property 'push' does not exist on type 'readonly string[]'.
+const despensa = [[2, 0, 1], [4, 4], [1]];
+const guardados = despensa.reduce((soma, prateleira) => soma + prateleira.reduce((s, n) => s + n, 0), 0);
+const [primeiro, segundo] = itens;
+const novaLista = [...itens, { nome: 'Sal 1kg', preco: 3, quantidade: 1 }];
+console.log(`Itens: ${nomes.join(', ')}`);
+console.log(`Acima de R$ 10: ${caros.map(item => item.nome).join(', ')}`);
+console.log(`Total da compra: R$ ${total.toFixed(2)}`);
+console.log(`Itens na despensa: ${guardados}`);
+
+},
+function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const leituras = [
+    ['Porto Velho', 34], ['Curitiba', 12], ['Manaus', 31], ['Porto Alegre', 9], ['Natal', 29]
+];
+function extremos(temps) {
+    if (temps.length === 0 || temps.some(t => !Number.isFinite(t))) {
+        throw new Error('Informe pelo menos uma temperatura finita');
+    }
+    return temps.reduce(([min, max], t) => [Math.min(min, t), Math.max(max, t)], [temps[0], temps[0]]);
+}
+const temperaturas = leituras.map(([, temp]) => temp);
+const [minima, maxima] = extremos(temperaturas);
+for (const [cidade, temp] of leituras)
+    console.log(`${cidade}: ${temp}°C`);
+const media = temperaturas.reduce((s, t) => s + t, 0) / temperaturas.length;
+console.log(`Mínima: ${minima}°C | Máxima: ${maxima}°C | Média: ${media.toFixed(1)}°C`);
+const contato1 = ['Ana', '69999990000', 'ana@exemplo.com'];
+const contato2 = ['Carlos', '69988880000'];
+const historico = ['Porto Velho', 30, 31, 32, 33, 34, 35, 36];
+const [cidadeHistorico, ...semana] = historico;
+const mediaSemanal = semana.length > 0 ? semana.reduce((s, t) => s + t, 0) / semana.length : null;
+// Média semanal: 33°C. Sem leituras, null evita divisão por zero.
+const capitalOficial = ['RO', 'Porto Velho'];
+// capitalOficial[1] = 'Manaus'; // ERRO_EX05 // error TS2540: Cannot assign to '1' because it is a read-only property. // error TS2540: Cannot assign to '1' because it is a read-only property.
+
+},
+function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var StatusPedido;
+(function (StatusPedido) {
+    StatusPedido[StatusPedido["Recebido"] = 1] = "Recebido";
+    StatusPedido[StatusPedido["EmPreparo"] = 2] = "EmPreparo";
+    StatusPedido[StatusPedido["SaiuParaEntrega"] = 3] = "SaiuParaEntrega";
+    StatusPedido[StatusPedido["Entregue"] = 4] = "Entregue";
+    StatusPedido[StatusPedido["Cancelado"] = 5] = "Cancelado";
+})(StatusPedido || (StatusPedido = {}));
+var FormaPagamento;
+(function (FormaPagamento) {
+    FormaPagamento["Pix"] = "PIX";
+    FormaPagamento["Cartao"] = "CARTAO";
+    FormaPagamento["Dinheiro"] = "DINHEIRO";
+})(FormaPagamento || (FormaPagamento = {}));
+function mensagem(status) {
+    switch (status) {
+        case StatusPedido.Recebido: return 'Recebemos seu pedido!';
+        case StatusPedido.EmPreparo: return 'Seu pedido está sendo preparado 🍳';
+        case StatusPedido.SaiuParaEntrega: return 'O entregador está a caminho 🛵';
+        case StatusPedido.Entregue: return 'Pedido entregue. Bom apetite!';
+        case StatusPedido.Cancelado: return 'Pedido cancelado.';
+        default: throw new Error('Status inválido');
+    }
+}
+function avancar(status) {
+    switch (status) {
+        case StatusPedido.Recebido: return StatusPedido.EmPreparo;
+        case StatusPedido.EmPreparo: return StatusPedido.SaiuParaEntrega;
+        case StatusPedido.SaiuParaEntrega: return StatusPedido.Entregue;
+        case StatusPedido.Entregue:
+        case StatusPedido.Cancelado: return status;
+        default: throw new Error('Status inválido');
+    }
+}
+let status = StatusPedido.Recebido;
+while (true) {
+    console.log(`[${status} - ${StatusPedido[status]}] ${mensagem(status)}`);
+    if (status === StatusPedido.Entregue)
+        break;
+    status = avancar(status);
+}
+let pagamento = FormaPagamento.Pix;
+// pagamento = 'PIX'; // ERRO_EX06 // error TS2322: Type '"PIX"' is not assignable to type 'FormaPagamento'. // error TS2322: Type '"PIX"' is not assignable to type 'FormaPagamento'.
+// Um literal string não é um membro do enum; use FormaPagamento.Pix.
+console.log(`Pagamento: ${pagamento}`);
+
+},
+function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const porEmail = (d, m) => { console.log(`[E-MAIL] para ${d}: ${m}`); };
+const porSms = (d, m) => {
+    if (m.length > 160) {
+        console.log('SMS ignorado: mensagem longa');
+        return;
+    }
+    console.log(`[SMS] para ${d}: ${m}`);
+};
+const porApp = (d, m) => { console.log(`[APP] para ${d}: ${m}`); };
+function notificarTodos(destinatarios, mensagem, enviar) {
+    destinatarios.forEach(d => enviar(d, mensagem));
+}
+const mensagem = 'Reunião de pais sexta às 19h';
+notificarTodos(['ana@escola.com'], mensagem, porEmail);
+notificarTodos(['joao.resp'], mensagem, porApp);
+notificarTodos(['(69) 99999-0000'], 'a'.repeat(161), porSms);
+// function teste(): void { return 10; } // ERRO_EX07
+const contar = (d, m) => m.length;
+// A atribuição contextual a uma função que retorna void permite um valor de retorno:
+// o chamador deve ignorá-lo. Uma função explicitamente declarada : void não pode retornar 10.
+
+},
+function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+let codigo = 42;
+function formatarCodigo(c) {
+    const numero = typeof c === 'number' ? c : Number(c.replace(/^CLI-/, ''));
+    if (!Number.isSafeInteger(numero) || numero < 0 || numero > 9999 ||
+        (typeof c === 'string' && !/^(CLI-)?\d{1,4}$/.test(c))) {
+        throw new Error('Código inválido: informe de 0 a 9999 ou CLI- seguido de até quatro dígitos');
+    }
+    return `CLI-${String(numero).padStart(4, '0')}`;
+}
+let tamanho = 'M';
+// tamanho = 'XG'; // ERRO_EX08A // error TS2322: Type '"XG"' is not assignable to type 'Tamanho'. // error TS2322: Type '"XG"' is not assignable to type 'Tamanho'.
+function calcularFrete(regiao) {
+    return { norte: 25, nordeste: 20, 'centro-oeste': 18, sudeste: 12, sul: 15 }[regiao];
+}
+const complemento = null;
+function limparTelefone(tel) { return String(tel).replace(/\D/g, ''); }
+const r = 'sul'; // const mantém o tipo literal 'sul'.
+let r2 = 'sul'; // let amplia o tipo para string, pois permite reatribuição.
+// calcularFrete(r2); // ERRO_EX08B // error TS2345: Argument of type 'string' is not assignable to parameter of type '"centro-oeste" | "nordeste" | "norte" | "sudeste" | "sul"'. // error TS2345: Argument of type 'string' is not assignable to parameter of type '"centro-oeste" | "nordeste" | "norte" | "sudeste" | "sul"'.
+let rCorrigido = 'sul';
+console.log(`Cliente: ${formatarCodigo(codigo)} | Camiseta: ${tamanho}`);
+console.log(`Entrega: Rua das Flores, 100 - ${complemento !== null && complemento !== void 0 ? complemento : '(sem complemento)'}`);
+console.log(`Frete para o ${r}: R$ ${calcularFrete(rCorrigido).toFixed(2)}`);
+console.log(`Telefone: ${limparTelefone('(69) 99999-0000')}`);
+
+},
+function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const respostaOk = '{"cidade":"Porto Velho","temperatura":34,"umidade":0.62}';
+const respostaQuebrada = '{"cidade":"Porto Velho","temperatura":"quente"}';
+const respostaInvalida = '{ cidade: Porto Velho ';
+function lerComAny(json) {
+    const dados = JSON.parse(json); // any autorizado somente nesta demonstração.
+    console.log(dados.temperatura.toFixed(1));
+}
+// lerComAny(respostaQuebrada); // ERRO_RUNTIME // TypeError: dados.temperatura.toFixed is not a function // TypeError: dados.temperatura.toFixed is not a function
+function falhar(mensagem) { throw new Error(mensagem); }
+function lerClima(json) {
+    let dados;
+    try {
+        dados = JSON.parse(json);
+    }
+    catch (erro) {
+        if (erro instanceof SyntaxError)
+            return falhar('JSON malformado');
+        throw erro;
+    }
+    if (typeof dados !== 'object' || dados === null)
+        return falhar('resposta deve ser um objeto');
+    if (!('cidade' in dados) || typeof dados.cidade !== 'string' || dados.cidade.trim() === '')
+        return falhar('campo "cidade" inválido');
+    if (!('temperatura' in dados) || typeof dados.temperatura !== 'number' || !Number.isFinite(dados.temperatura))
+        return falhar('campo "temperatura" inválido');
+    return { cidade: dados.cidade, temperatura: dados.temperatura };
+}
+for (const resposta of [respostaOk, respostaQuebrada, respostaInvalida]) {
+    try {
+        const clima = lerClima(resposta);
+        console.log(`${clima.cidade}: ${clima.temperatura.toFixed(1)}°C`);
+    }
+    catch (erro) {
+        console.log(`Erro: ${erro instanceof Error ? erro.message : 'erro desconhecido'}`);
+    }
+}
+
+},
+function(console){const exports={};
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var SituacaoTicket;
+(function (SituacaoTicket) {
+    SituacaoTicket["Aberto"] = "ABERTO";
+    SituacaoTicket["Pago"] = "PAGO";
+})(SituacaoTicket || (SituacaoTicket = {}));
+function falhar(mensagem) { throw new Error(mensagem); }
+function calcularTarifa(v, horas) {
+    if (!Number.isInteger(horas) || horas < 1)
+        return falhar('Horas devem ser inteiras e no mínimo 1');
+    switch (v.tipo) {
+        case 'carro': return 8 + (horas - 1) * 5;
+        case 'moto': return 4 + (horas - 1) * 2;
+        case 'caminhao': return 15 + (horas - 1) * 10;
+        default: {
+            const _naoTratado = v;
+            return _naoTratado;
+        }
+    }
+}
+// ERRO_VAN_UNIAO // error TS2322: Type 'Van' is not assignable to type 'never'. // error TS2322: Type 'Van' is not assignable to type 'never'.
+// never garante que todos os membros da união foram tratados pelo switch.
+function fecharTicket(t) {
+    const [entrada, saida] = t.periodo;
+    if (!Number.isInteger(entrada) || !Number.isInteger(saida) || entrada < 0 || saida < entrada)
+        return falhar('Período inválido: use horas inteiras e saída maior ou igual à entrada');
+    const horas = Math.max(1, saida - entrada);
+    const valor = calcularTarifa(t.veiculo, horas) * (t.selo ? 0.5 : 1);
+    return Object.assign(Object.assign({}, t), { valor, situacao: SituacaoTicket.Pago });
+}
+function registrar(msg) { console.log(msg); }
+function lerVeiculo(json) {
+    let dados;
+    try {
+        dados = JSON.parse(json);
+    }
+    catch (erro) {
+        if (erro instanceof SyntaxError)
+            return falhar('JSON malformado');
+        throw erro;
+    }
+    if (typeof dados !== 'object' || dados === null)
+        return falhar('Veículo deve ser um objeto');
+    if (!('tipo' in dados) || typeof dados.tipo !== 'string')
+        return falhar('campo "tipo" inválido');
+    if (!('placa' in dados) || typeof dados.placa !== 'string' || !/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(dados.placa))
+        return falhar('campo "placa" inválido');
+    const placa = dados.placa;
+    switch (dados.tipo) {
+        case 'carro':
+            if (!('portas' in dados) || (dados.portas !== 2 && dados.portas !== 4))
+                return falhar('campo "portas" inválido');
+            return { placa, tipo: 'carro', portas: dados.portas };
+        case 'moto':
+            if (!('cilindradas' in dados) || typeof dados.cilindradas !== 'number' || !Number.isFinite(dados.cilindradas) || dados.cilindradas <= 0)
+                return falhar('campo "cilindradas" inválido');
+            return { placa, tipo: 'moto', cilindradas: dados.cilindradas };
+        case 'caminhao':
+            if (!('eixos' in dados) || typeof dados.eixos !== 'number' || !Number.isInteger(dados.eixos) || dados.eixos < 2)
+                return falhar('campo "eixos" inválido');
+            return { placa, tipo: 'caminhao', eixos: dados.eixos };
+        default: return falhar(`tipo "${dados.tipo}" desconhecido`);
+    }
+}
+const tickets = [
+    { veiculo: lerVeiculo('{"placa":"ABC1D23","tipo":"carro","portas":4}'), periodo: [8, 11], selo: false, situacao: SituacaoTicket.Aberto },
+    { veiculo: lerVeiculo('{"placa":"MOT0A12","tipo":"moto","cilindradas":160}'), periodo: [9, 10], selo: false, situacao: SituacaoTicket.Aberto },
+    { veiculo: lerVeiculo('{"placa":"CAM9Z99","tipo":"caminhao","eixos":3}'), periodo: [7, 12], selo: false, situacao: SituacaoTicket.Aberto },
+    { veiculo: lerVeiculo('{"placa":"XYZ4E56","tipo":"carro","portas":2}'), periodo: [14, 16], selo: true, situacao: SituacaoTicket.Aberto }
+];
+const fechados = tickets.map(fecharTicket);
+fechados.map(t => {
+    var _a;
+    const horas = Math.max(1, t.periodo[1] - t.periodo[0]);
+    registrar(`[${t.situacao}] ${t.veiculo.placa} (${t.veiculo.tipo}) - ${horas}h - R$ ${((_a = t.valor) !== null && _a !== void 0 ? _a : 0).toFixed(2)}${t.selo ? ' (selo -50%)' : ''}`);
+    return t;
+});
+const faturamento = fechados.filter(t => t.situacao === SituacaoTicket.Pago).reduce((s, t) => { var _a; return s + ((_a = t.valor) !== null && _a !== void 0 ? _a : 0); }, 0);
+const entradas = tickets.reduce((contagem, t) => { contagem[t.veiculo.tipo] += 1; return contagem; }, { carro: 0, moto: 0, caminhao: 0 });
+registrar(`Faturamento: R$ ${faturamento.toFixed(2)}`);
+registrar(`Entradas: carro=${entradas.carro}, moto=${entradas.moto}, caminhao=${entradas.caminhao}`);
+try {
+    lerVeiculo('{"placa":"ABC1D23","tipo":"bicicleta"}');
+}
+catch (erro) {
+    registrar(`Erro ao ler veículo: ${erro instanceof Error ? erro.message : 'erro desconhecido'}`);
+}
+
+}];
+let selected=-1;
+const get=id=>document.getElementById(id);
+function execute(index){
+ selected=index;
+ document.querySelectorAll('[data-index]').forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.index)===index)));
+ const number=String(index+1).padStart(2,'0');
+ get('exercise-label').textContent='Exercício '+number;
+ get('title').textContent=titles[index];get('topic').textContent=topics[index];
+ get('filename').textContent='ex'+number+'.ts';get('code').textContent=sources[index];get('download').disabled=false;
+ const lines=[];
+ const logger={log:(...values)=>lines.push(values.map(value=>typeof value==='string'?value:JSON.stringify(value)).join(' '))};
+ try{runners[index](logger);get('output').textContent=lines.join('\n');get('status').textContent='Exercício '+number+' executado · '+lines.length+' linhas de saída. Clique novamente para repetir.';}
+ catch(error){get('output').textContent=lines.concat('Falha na execução: '+(error instanceof Error?error.message:String(error))).join('\n');get('status').textContent='A execução encontrou uma falha.';}
+}
+document.querySelectorAll('[data-index]').forEach(button=>button.addEventListener('click',()=>execute(Number(button.dataset.index))));
+get('download').addEventListener('click',()=>{if(selected<0)return;const url=URL.createObjectURL(new Blob([sources[selected]],{type:'text/plain;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='ex'+String(selected+1).padStart(2,'0')+'.ts';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+</script></body></html>

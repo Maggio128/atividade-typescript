@@ -16,7 +16,7 @@ const mensagem = 'Reunião de pais sexta às 19h';
 notificarTodos(['ana@escola.com'], mensagem, porEmail);
 notificarTodos(['joao.resp'], mensagem, porApp);
 notificarTodos(['(69) 99999-0000'], 'a'.repeat(161), porSms);
-// function teste(): void { return 10; } // ERRO_EX07 // error TS2322: Type 'number' is not assignable to type 'void'.
+// function teste(): void { return 10; } // ERRO_EX07
 const contar = (d, m) => m.length;
 // A atribuição contextual a uma função que retorna void permite um valor de retorno:
 // o chamador deve ignorá-lo. Uma função explicitamente declarada : void não pode retornar 10.
